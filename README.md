@@ -1,5 +1,7 @@
 # yup-abn
 
+[![CI](https://github.com/azerella/yup-abn/actions/workflows/CI.yml/badge.svg)](https://github.com/azerella/yup-abn/actions/workflows/CI.yml)
+
 Yup extension that validates [ABN](https://abr.business.gov.au/Help/AbnFormat), [ACN, ARBN or ARSN](https://asic.gov.au/for-business/registering-a-company/steps-to-register-a-company/australian-company-numbers/australian-company-number-digit-check/) business identifiers for Australian business'.
 
 ## Install
