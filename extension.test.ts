@@ -44,13 +44,23 @@ describe('ABN', () => {
   test('Detects invalid numbers', () => {
     const schema = Yup.number().abn().required();
 
-    expect(schema.isValidSync(11111111111)).toBe(false);
     expect(schema.isValidSync(40110219460)).toBe(false);
     expect(schema.isValidSync(30085635602)).toBe(false);
     expect(schema.isValidSync(19406545079)).toBe(false);
     expect(schema.isValidSync(87801276722)).toBe(false);
     expect(schema.isValidSync(25656962664)).toBe(false);
     expect(schema.isValidSync(1234)).toBe(false);
+  });
+
+  test('Specifies an error message on failed validation', () => {
+    const schema = Yup.number().abn().required();
+
+    try {
+      schema.validateSync(51824753551);
+    } catch (err) {
+      expect(err).toBeInstanceOf(Yup.ValidationError);
+      expect(err.errors[0]).toEqual('51824753551 is not a valid ABN');
+    }
   });
 });
 
@@ -114,5 +124,16 @@ describe('ACN, ARBN & ARSN', () => {
     expect(schema.isValidSync('010249965')).toBe(false);
     expect(schema.isValidSync('010499964')).toBe(false);
     expect(schema.isValidSync('010749962')).toBe(false);
+  });
+
+  test('Specifies an error message on failed validation', () => {
+    const schema = Yup.string().acn().required();
+
+    try {
+      schema.validateSync('010249965');
+    } catch (err) {
+      expect(err).toBeInstanceOf(Yup.ValidationError);
+      expect(err.errors[0]).toEqual('010249965 is not a valid ACN, ARSN or ARBN');
+    }
   });
 });

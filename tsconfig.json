@@ -4,10 +4,12 @@
     "module": "commonjs",
     "strictNullChecks": true,
     "noImplicitThis": false,
+    "noImplicitAny": false,
     "strict": true,
     "pretty": true,
     "declaration": true,
-    "declarationDir": "lib"
+    "declarationDir": "lib",
+    "useUnknownInCatchVariables": false
   },
-  "include": ["extension.ts"]
+  "include": ["extension.ts", "extension.test.ts"]
 }
